@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@600&family=Peralta&display=swap');
+/* font-family: 'Gemunu Libre', sans-serif;
+font-family: 'Peralta', cursive; */
+*{
+    padding: 0;
+    margin: 0;
+}
+
+header{
+    height: 100%;
+    width: 100%;
+    font-family: 'Peralta', cursive; 
+    background-color: greenyellow;
+    text-align: center;
+    padding: 2rem;
+    gap: 0.5rem;
+}
+
+main{
+    height: 100%;
+    width: 100%;
+    font-family: 'Gemunu Libre', sans-serif;
+    background-color: white;
+    text-align: center;
+}
+
+.productos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: center;
+}
+
+.card{
+    margin: 5% 0;
+    border-radius: 10px;
+    border: solid black 5px;
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    margin: auto;
+}
+
+.buscador{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer{
+    height: 100%;
+    width: 100%;
+    font-family: 'Gemunu Libre', sans-serif;
+    background-color: greenyellow;
+    padding: 5rem;
+    text-align: center;
+    gap: 1rem;
+}
