@@ -3,7 +3,7 @@
 const contenedor = document.getElementById("contenedor");
 const contenedorDos = document.getElementById("contenedorDos");
 const formulario = document.getElementById("formulario");
-const botonComprar = document.getElementById("botonComprar");
+//const botonComprar = document.getElementById("botonComprar");
 const productosComprados = document.getElementById("productosComprados");
 
 
@@ -21,25 +21,25 @@ const bicicletas = [
         },
 
         { id: 3,
-            nombre: "Bicicleta de Carrera",
+            nombre: "Bicicleta Carrera",
             precio: 144500,
             imagen: "./img/bicicletasdecarrera_4.jpg"
         },
 
         { id: 4,
-            nombre: "Bicicleta de Carbono",
+            nombre: "MTB Carbono",
             precio: 204400,
             imagen: "./img/carbono.jpg"
         },
 
         { id: 5,
-            nombre: "Bicicleta Feature MTB",
+            nombre: "MTB Feature",
             precio: 104500,
             imagen: "./img/FeatureBiciMontana.jpg"
         },
 
         { id: 6,
-            nombre: "Monopatin Electrico",
+            nombre: "Mono Electrico",
             precio: 94800,
             imagen: "./img/monopatin.jpg"
         },
@@ -57,57 +57,58 @@ localStorage.setItem("carrito", JSON.stringify(bicicletas));
 
 //render
 bicicletas.forEach(bicicletas => {
+    const {id, nombre, precio, imagen} = bicicletas//desestructuracion de objetos
     let muestra = document.createElement("div")
     muestra.innerHTML = `
-            <div class="card p1" style="width: 13rem;">
-            <img src="${bicicletas.imagen}" class="card-img-top" alt="bicicletas">
+            <div class="card" style="width: 13rem;">
+            <img src="${imagen}" class="card-img-top" alt="bicicletas">
                 <div class="card-body">
-                    <h3 class="card-title">${bicicletas.nombre}</h3>
-                    <h4 class="card-title">${bicicletas.precio}</h4>
-                    <p class="card-text">${bicicletas.id}</p>
-                    <button id="${bicicletas.id}" class="btn btn-dark">Comprar</button>
+                    <h3 class="card-title">${nombre}</h3>
+                    <h4 class="card-title">$${precio}</h4>
+                    <p class="card-text">${id}</p>    
+                    <button id="${id}" class="btn btn-dark">Comprar</button>
                 </div>
             </div>`
 
-    contenedor.append(muestra);
-    const boton = document.getElementById(bicicletas.id)
-    boton.addEventListener("click", () => comprar(bicicletas))
+        contenedor.append(muestra);
+        const boton = document.getElementById(id)
+        boton.addEventListener("click", () => comprar(bicicletas))
 });
 
+//evento
 formulario.addEventListener("submit", (e) => {
     e.preventDefault();
     contenedorDos.innerHTML= "";
     let inputs = e.target.children;
 
     let producto = bicicletas.find((item) => item.nombre === inputs[0].value);
+    const {id, nombre, precio, imagen} = producto//desestructuracion de objetos
     let div = document.createElement("div");
         div.innerHTML = `
         <div class="card" style="width: 13rem;">
-            <img src="${producto.imagen}" class="card-img-top" alt="bicicletas">
+            <img src="${imagen}" class="card-img-top" alt="bicicletas">
                 <div class="card-body">
-                    <h3 class="card-title">${producto.nombre}</h3>
-                    <h4 class="card-title">${producto.precio}</h4>
-                    <p class="card-text">${producto.id}</p>
-                    <button id="${producto.id}" class="btn btn-dark">Comprar</button>
+                    <h3 class="card-title">${nombre}</h3>
+                    <h4 class="card-title">${precio}</h4>
+                    <p class="card-text">${id}</p>
+                    <button id="${id}" class="btn btn-dark">Comprar</button>
                 </div>
             </div>`
 
     contenedorDos.append(div);
 });
 
+//operador spread
 const comprar = (bicicletas) =>{
     let bicisComprada = carrito.find(item => item.id === bicicletas.id)
     if (bicisComprada === undefined){
         carrito.push({
-            id: bicicletas.id,
-            nombre: bicicletas.nombre,
-            precio: bicicletas.precio,
-            imagen: bicicletas.imagen,
+            ...bicicletas,
             cantidad: 1
         })
     }else{
-        bicisComprada = bicisComprada.precio + bicicletas.precio;
-        bicisComprada = bicisComprada.cantidad + 1;
+        bicisComprada.precio = bicisComprada.precio + bicicletas.precio;
+        bicisComprada.cantidad = bicisComprada.cantidad + 1;
     }
 }
 
