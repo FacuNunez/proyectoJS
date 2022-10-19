@@ -6,7 +6,7 @@ const formulario = document.getElementById("formulario");
 const vaciar = document.getElementById("vaciar");
 const productosComprados = document.getElementById("productosComprados");
 
-const bicicletas = [{
+/* const bicicletas = [{
         id: 1,
         nombre: "Bicicleta Junior",
         precio: 4500,
@@ -54,13 +54,43 @@ const bicicletas = [{
         precio: 9650,
         imagen: "./img/patacleta.jpg",
     },
-];
+]; */
 
 let carrito = [];
 localStorage.setItem("carrito", JSON.stringify(bicicletas));
 
 //render
-bicicletas.forEach((bicicletas) => {
+fetch(".//bicicletas.json")
+    .then((response) => response.json())
+    .then((data) => {
+        data.forEach((publicacion) => {
+            let muestra = document.createElement("div");
+            muestra.innerHTML = `
+            <div class="card" style="width: 13rem;">
+            <img src="${publicacion.imagen}" class="card-img-top" alt="bicicletas">
+                <div class="card-body">
+                    <h3 class="card-title">${publicacion.nombre}</h3>
+                    <h4 class="card-title">$${publicacion.precio}</h4>
+                    <p class="card-text">${publicacion.id}</p>    
+                    <button id="${publicacion.id}" class="btn btn-dark">Comprar</button>
+                </div>
+            </div>`;
+            contenedor.append(muestra);
+            const boton = document.getElementById(id);
+            boton.addEventListener("click", () => {
+                comprar(bicicletas);
+                Swal.fire({
+                    title: "Agregaste",
+                    text: `${nombre}`,
+                    imageUrl: `${imagen}`,
+                    imageWidth: 400,
+                    imageHeight: 200,
+                });
+            });
+        });
+    })
+    .catch((error) => console.log(error));
+/* bicicletas.forEach((bicicletas) => {
     const {
         id,
         nombre,
@@ -91,7 +121,7 @@ bicicletas.forEach((bicicletas) => {
             imageHeight: 200,
         });
     });
-});
+}); */
 
 //evento
 formulario.addEventListener("submit", (e) => {
@@ -100,12 +130,7 @@ formulario.addEventListener("submit", (e) => {
     let inputs = e.target.children;
 
     let producto = bicicletas.find((item) => item.nombre === inputs[0].value);
-    const {
-        id,
-        nombre,
-        precio,
-        imagen
-    } = producto; //desestructuracion de objetos
+    const { id, nombre, precio, imagen } = producto; //desestructuracion de objetos
     let div = document.createElement("div");
     div.innerHTML = `
         <div class="card" style="width: 13rem;">
@@ -136,4 +161,6 @@ const comprar = (bicicletas) => {
 };
 
 productosComprados.addEventListener("click", () => console.log(carrito));
-productosComprados.addEventListener("click", () => localStorage.setItem("carrito", JSON.stringify(carrito)));
+productosComprados.addEventListener("click", () =>
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+);

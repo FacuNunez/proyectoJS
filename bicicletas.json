@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "nombre": "Bicicleta Junior",
+        "precio": 4500,
+        "imagen": "./img/bicicleta-junior.jpg"
+    },
+
+    {
+        "id": 2,
+        "nombre": "Bicicleta Urbana",
+        "precio": 54500,
+        "imagen": "./img/bicicleta-urbana.jpg"
+    },
+
+    {
+        "id": 3,
+        "nombre": "Bicicleta Carrera",
+        "precio": 144500,
+        "imagen": "./img/bicicletasdecarrera_4.jpg"
+    },
+
+    {
+        "id": 4,
+        "nombre": "MTB Carbono",
+        "precio": 204400,
+        "imagen": "./img/carbono.jpg"
+    },
+
+    {
+        "id": 5,
+        "nombre": "MTB Feature",
+        "precio": 104500,
+        "imagen": "./img/FeatureBiciMontana.jpg"
+    },
+
+    {
+        "id": 6,
+        "nombre": "Mono Electrico",
+        "precio": 94800,
+        "imagen": "./img/monopatin.jpg"
+    },
+
+    {
+        "id": 7,
+        "nombre": "Bicicleta Madera",
+        "precio": 9650,
+        "imagen": "./img/patacleta.jpg"
+    }
+]
