@@ -46,5 +46,26 @@
         "nombre": "Bicicleta Madera",
         "precio": 9650,
         "imagen": "./img/patacleta.jpg"
+    },
+
+    {
+        "id": 8,
+        "nombre": "Vairo Woman",
+        "precio": 69650,
+        "imagen": "./img/bicicleta-urbana-paseo-vairo-metro-classic-r26-18vel-v-brake.jpg"
+    },
+
+    {
+        "id": 9,
+        "nombre": "Moto Electrica",
+        "precio": 259700,
+        "imagen": "./img/moto-electrica.png"
+    },
+
+    {
+        "id": 10,
+        "nombre": "Scooter Electrico",
+        "precio": 270650,
+        "imagen": "./img/scooter-electrica-super-soco-cux.jpg"
     }
 ]
